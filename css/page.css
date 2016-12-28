@@ -61,7 +61,7 @@ blockquote {
 }
 
 .toolBtn i {
-    font-size: 1.3rem;
+    font-size: 22px;
     position: absolute;
     top: 14px;
     left: 14px;
@@ -185,9 +185,9 @@ footer a i {
         font-size: 0.9rem;
     }
     .toolBtn i {
-        font-size: 1.35rem;
-        top: 14px;
-        left: 14px;
+        // font-size: 1.35rem;
+        // top: 14px;
+        // left: 14px;
     }
     footer {
         width: auto;
