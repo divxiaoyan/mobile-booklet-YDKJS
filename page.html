@@ -83,13 +83,9 @@
 	<script>
 
 		window.onload = function(){
-
-			// add homeBtn
-            var homeBtn = document.getElementById('home');
-            homeBtn.onclick = function(){
-                console.log(1);
-                window.location.href = window.location.origin;
-            }
+			document.addEventListener('touchstart', function(e){
+				e.preventDefault();
+			}, false);
 
 		    // add page content from markdown files
 		 	var anchor = document.getElementById('anchor');
@@ -146,11 +142,12 @@
 							footerNext.href = window.location.href.slice(0,-1) + (index+1);
 
 							if(index == 0){
-								footerBefore.href = window.location.origin + '/booklet.html?id=' + bookId;
+								footerBefore.setAttribute('href', 'booklet.html?id=' + bookId);
+								// footerBefore.href = window.location.origin + '/booklet.html?id=' + bookId;
 								$('#footerBefore span').html('本书首页');
 							}
 							if(index == maxIndex){
-								footerNext.href = window.location.origin + '/booklet.html?id=' + bookId;
+								footerNext.setAttribute('href', 'booklet.html?id=' + bookId);
 								$('#footerNext span').html('本书首页');
 							}
 
@@ -161,8 +158,6 @@
 							for(var i=0, j=h2s.length; i<j; i++){
 								var content = h2s[i].innerHTML;
 								h2s[i].innerHTML = `<div id="h2-${i}" class="h2Anchor"></div>${content}`;
-								// h2s[i].id = `h2-${i}`;
-								// h2s[i].className = 'h2Anchor';
 								sideNav.innerHTML += `<a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="#h2-${i}">${content}</a>`;
 							}
 

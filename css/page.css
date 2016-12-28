@@ -52,6 +52,7 @@ blockquote {
     bottom: 55px;
     transition: all 0.3s ease;
     z-index: 2;
+    user-select: none;
 }
 
 .toolBtn:hover {
@@ -67,13 +68,13 @@ blockquote {
 
 .toolkit {
     width: 100%;
-    height: 110px;
-    padding: 5px;
+    height: 160px;
+    padding: 18px 26px;
     box-sizing: border-box;
     background-color: rgb(49, 49, 47);
     position: fixed;
     left: 0;
-    bottom: -110px;
+    bottom: -160px;
     transition: all 0.3s ease;
     z-index: 3;
 }
@@ -93,8 +94,8 @@ blockquote {
 
 .toolkit ul li {
     float: left;
-    width: 25px;
-    height: 25px;
+    width: 38px;
+    height: 38px;
     border-radius: 6px;
     box-sizing: border-box;
 }
@@ -104,7 +105,7 @@ blockquote {
 }
 
 .toolkit ul.font li{
-    line-height: 25px;
+    line-height: 38px;
     color: rgb(140, 140, 140);
     border: 1px solid rgb(140, 140, 140);
     text-align: center;
