@@ -6,7 +6,6 @@
 	<title>你不知道的JS掌上版</title>
 	<link rel="stylesheet" href="assets/highlight/solarized-light.css">
 	<link rel="stylesheet" href="assets/material/material-font.css">
-    <link rel="stylesheet" href="assets/material/material-icons.css">
     <link rel="stylesheet" href="assets/material/material-components-web.min.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main.css">
@@ -17,8 +16,8 @@
 <body class="mdc-typography homepage-body">
 	<!-- header toolbar -->
     <div class="header-toolbar mdc-theme--primary-bg mdc-theme--text-primary-on-primary mdc-typography--title mdc-elevation--z4">
-        <button class="header-menu material-icons">menu</button>
-        <span class="section-title" id="section-title">你不知道的JavaScript</span>
+        <button class="icon icon-menu"></button>
+        <span class="section-title">你不知道的JavaScript</span>
         <a class="icon-github" href="https://github.com/antipasjiajia/mobile-booklet-YDKJS.git"></a>
     </div>
 
@@ -37,10 +36,10 @@
                 <hr class="mdc-list-divider">
                 <div class="mdc-list">
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="index.html">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">home</i>丛书主页
+                        <i class="icon-side icon-home"></i>丛书主页
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="" id="bookletHome">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">format_list_bulleted</i>本册目录
+                        <i class="icon-side icon-list-ul"></i>本册目录
                     </a>
                 </div>
             </nav>
@@ -51,7 +50,7 @@
     <main class="page-main" id="anchor"></main>
 
     <!-- toolkit -->
-    <div class="toolBtn mdc-elevation--z4 mdc-ripple-surface" data-mdc-auto-init="MDCRipple" id="toolBtn"><i class="material-icons">settings</i></div>
+    <div class="toolBtn mdc-elevation--z4 mdc-ripple-surface" data-mdc-auto-init="MDCRipple" id="toolBtn"><i class="icon-cog"></i></div>
 	<div class="toolkit mdc-elevation--z4" id="toolKit">
     	<ul class="font" id="font">
     		<li class="rem08">Aa</li>
@@ -122,12 +121,12 @@
 							var footer = document.createElement('footer');
 							
 							footer.innerHTML = `<a id="footerBefore" href="">
-													<i class="header-menu material-icons">navigate_before</i>
+													<i class="icon-left"></i>
 													<span class="footer-nav">上一章</span>
 												</a>
 		    								    <a id="footerNext" href="">
 		    								    	<span class="footer-nav">下一章</span>
-		    								    	<i class="header-menu material-icons">navigate_next</i>
+		    								    	<i class="icon-right"></i>
 	    								    	</a>`;
 							$('body').append(footer);
 
@@ -163,7 +162,7 @@
 						    var drawer = new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer'));
 						   	var pageDrawer = document.getElementById('pageDrawer');
 						    window.mdc.autoInit();
-						    document.querySelector('.header-menu').addEventListener('click', function() {
+						    document.querySelector('.icon-menu').addEventListener('click', function() {
 						        drawer.open = true;
 						    });
 						    pageDrawer.querySelector('nav').addEventListener('click', function(){

@@ -61,9 +61,10 @@ blockquote {
 }
 
 .toolBtn i {
+    font-size: 1.35rem;
     position: absolute;
-    top: 13px;
-    left: 13px;
+    top: 14px;
+    left: 14px;
 }
 
 .toolkit {
@@ -158,8 +159,7 @@ footer a {
 }
 
 footer a i {
-    position: relative;
-    top: 5px;
+    font-size:0.9rem;
 }
 
 
