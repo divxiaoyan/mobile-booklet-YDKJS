@@ -14,7 +14,7 @@
         background-color: rgb(225, 225, 225);
         user-select: none;
     }
-    
+
 /*header*/
     .header-toolbar {
         width: 100%;
@@ -29,7 +29,8 @@
         z-index:2;
     }
     
-    .header-toolbar .header-menu {
+    .header-toolbar .icon-menu {
+        font-size: 1.4rem;
         background: none;
         border: none;
         outline: none;
@@ -40,7 +41,7 @@
         color: #FFF;
         box-sizing: border-box;
     }
-    .header-toolbar .header-menu:hover{
+    .header-toolbar .icon-menu:hover{
     	cursor: pointer;
     }
 
@@ -80,6 +81,11 @@
     	background-color: rgba(0, 0, 0, 0.05);
     	transition: all 0.2s ease;
 		cursor:pointer;
+    }
+    .icon-side {
+        color: rgb(117, 117, 117);
+        font-size: 1.2rem;
+        margin-right: 7px;
     }
     
 /*homepage main*/

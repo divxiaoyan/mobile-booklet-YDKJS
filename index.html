@@ -15,7 +15,7 @@
 <body class="mdc-typography homepage-body">
 	<!-- header toolbar -->
     <div class="header-toolbar mdc-theme--primary-bg mdc-theme--text-primary-on-primary mdc-typography--title mdc-elevation--z4">
-        <button class="header-menu material-icons">menu</button>
+        <button class="icon icon-menu"></button>
         <span class="section-title">你不知道的JavaScript</span>
         <a class="icon-github" href="https://github.com/antipasjiajia/mobile-booklet-YDKJS.git"></a>
     </div>
@@ -31,34 +31,34 @@
             <nav class="mdc-temporary-drawer__content mdc-list-group">
                 <div id="icon-with-text-demo" class="mdc-list">
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=up-and-going">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_one</i>入门与进阶
+                        1. 入门与进阶
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=scope-and-closures">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_two</i>作用域与闭包
+                        2. 作用域与闭包
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=this-and-object-prototypes">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_3</i>this与对象原型
+                        3. this与对象原型
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=types-and-grammar">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_4</i>类型与文法
+                        4. 类型与文法
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=async-and-performance">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_5</i>异步与性能
+                        5. 异步与性能
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=es6-and-beyond">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_6</i>ES6与未来
+                        6. ES6与未来
                     </a>
                 </div>
                 <hr class="mdc-list-divider">
                 <div class="mdc-list">
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="about.html">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">book</i>关于
+                        <i class="icon-side icon-about"></i>关于
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="https://github.com/getify/You-Dont-Know-JS">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">local_library</i>丛书Github（英文版）
+                        <i class="icon-side icon-reading"></i>丛书Github（英文版）
                     </a>
                     <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="https://github.com/JoeHetfield/You-Dont-Know-JS">
-                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">local_library</i>丛书Github（中文版）
+                        <i class="icon-side icon-reading"></i>丛书Github（中文版）
                     </a>
                 </div>
             </nav>
@@ -124,7 +124,7 @@
 		    var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
 		    var drawer = new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer'));
 		    window.mdc.autoInit();
-		    document.querySelector('.header-menu').addEventListener('click', function() {
+		    document.querySelector('.icon-menu').addEventListener('click', function() {
 		        drawer.open = true;
 		    });
 
