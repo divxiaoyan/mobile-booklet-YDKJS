@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>你不知道的JS掌上版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/material/material-font.css">
+    <link rel="stylesheet" href="assets/material/material-icons.css">
+    <link rel="stylesheet" href="assets/material/material-components-web.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .home-main{
+            margin-bottom: 100px;
+        }
+        .home-main .title{
+            margin: 25px;
+            padding-top: 20px;
+            font-weight: bold;
+        }
+        .mdc-card__primary:last-child{
+            padding-bottom:16px;
+        }
+        footer {
+            height:56px;
+            width:100%;
+            position: fixed;
+            bottom:0px;
+        }
+        @media (min-width: 600px) {
+            .homepage-body {
+                overflow: auto;
+            }
+            .mdc-card {
+                width: 42%;
+                margin: 20px;
+                float: none;
+            }
+            footer {
+                height:64px;
+            }
+        }
+    </style>
+</head>
+
+<body class="mdc-typography homepage-body">
+	<!-- header toolbar -->
+    <div class="header-toolbar mdc-theme--primary-bg mdc-theme--text-primary-on-primary mdc-typography--title mdc-elevation--z4">
+        <button class="header-menu material-icons">menu</button>
+        <span class="section-title">你不知道的JavaScript</span>
+        <a class="icon-github" href="https://github.com/antipasjiajia/mobile-booklet-YDKJS.git"></a>
+    </div>
+
+    <!-- side drawer -->
+    <aside class="mdc-temporary-drawer" id="drawer">
+        <nav class="mdc-temporary-drawer__drawer">
+            <header class="mdc-temporary-drawer__header">
+                <div class="mdc-temporary-drawer__header-content mdc-typography--headline" id="home">
+                     你不知道的
+                </div>
+            </header>
+            <nav class="mdc-temporary-drawer__content mdc-list-group">
+                <div id="icon-with-text-demo" class="mdc-list">
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=up-and-going">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_one</i>入门与进阶
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=scope-and-closures">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_two</i>作用域与闭包
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=this-and-object-prototypes">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_3</i>this与对象原型
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=types-and-grammar">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_4</i>类型与文法
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=async-and-performance">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_5</i>异步与性能
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="booklet.html?id=es6-and-beyond">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">looks_6</i>ES6与未来
+                    </a>
+                </div>
+                <hr class="mdc-list-divider">
+                <div class="mdc-list">
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="about.html">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">book</i>关于
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="https://github.com/getify/You-Dont-Know-JS">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">local_library</i>丛书Github（英文版）
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="https://github.com/JoeHetfield/You-Dont-Know-JS">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">local_library</i>丛书Github（中文版）
+                    </a>
+                </div>
+            </nav>
+        </nav>
+    </aside>
+
+    <!-- booklet page main -->
+    <main class="home-main" id="cardAnchor">
+    </main>
+
+	<!-- page footer -->
+    <!-- <footer>
+    	<div>Page crafted with heart by <a href="https://github.com/antipasjiajia">@Antipasjiajia</a> in Dec. 2016</div>
+    	<div>Using <a href="https://material.io/">Material-UI</a></div>
+    </footer> -->
+
+    <script src="assets/jquery-1.12.3.min.js"></script>
+    <script src="assets/material/material-components-web.min.js"></script>
+    <script>
+    	window.onload = function(){
+
+            // add homeBtn
+            var homeBtn = document.getElementById('home');
+            homeBtn.onclick = function(){
+                console.log(1);
+                window.location.href = window.location.origin;
+            }
+    		
+            // add page content from markdown files
+            var cardAnchor = document.getElementById('cardAnchor');
+
+            var bookId = window.location.search.slice(4);
+
+            $.ajax({
+                type: 'GET',
+                url: 'contents.json',
+                success: function(d){
+                    var chapters = d[bookId].chapters;
+                    cardAnchor.innerHTML = `<h1 class="title mdc-typography--headline">${d[bookId].bookTitle}</h1>`;
+                    for(var i=0, j=chapters.length; i<j; i++){
+                        cardAnchor.innerHTML += 
+                            `<a href="page.html?id=${bookId}&index=${i}" class="mdc-card">
+                                <section class="mdc-card__primary mdc-ripple-surface" data-mdc-auto-init="MDCRipple">
+                                    <h1 class="mdc-card__title mdc-card__title" data-mdc-auto-init="MDCRipple">${chapters[i].chTitle}</h1>
+                                    <h2 class="mdc-card__subtitle">${chapters[i].engTitle}</h2>
+                                </section>
+                            </a>`;
+                    }
+
+                    // append footer
+                    var footer = document.createElement('footer');
+                    footer.innerHTML = `<div>Page crafted with heart by <a href="https://github.com/antipasjiajia">@Antipasjiajia</a></div>
+                                        <div>Using <a href="https://material.io/">Material-UI</a></div>`;
+                    $('body').append(footer);
+
+                    // init mdc default behaviors
+                    var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+                    var drawer = new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer'));
+                    window.mdc.autoInit();
+                    document.querySelector('.header-menu').addEventListener('click', function() {
+                        drawer.open = true;
+                    });
+                }
+            });
+
+
+
+    	}
+    	
+	    
+    </script>
+
+</html>

@@ -1,0 +1,66 @@
+{
+	"up-and-going": {"bookTitle": "入门与进阶", 
+				   "chapters": [
+				   		{"chTitle": "第一章：进入编程", "fileName": "ch1.md", "engTitle": "Into Programming"},
+				   		{"chTitle": "第二章：进入JavaScript", "fileName": "ch2.md", "engTitle": "Into JavaScript"},
+				   		{"chTitle": "第三章：进入YDKJS", "fileName": "ch3.md", "engTitle": "Into YDKJS"},
+				   		{"chTitle": "附录A：鸣谢", "fileName": "apA.md", "engTitle": "Thank You's!"}
+				   ]},
+	"scope-and-closures": {"bookTitle": "作用域与闭包", 
+				   "chapters": [
+				   		{"chTitle": "第一章：什么是作用域？", "fileName": "ch1.md", "engTitle": "What is Scope?"},
+				   		{"chTitle": "第二章：词法作用域", "fileName": "ch2.md", "engTitle": "Lexical Scope"},
+				   		{"chTitle": "第三章：函数与块儿作用域", "fileName": "ch3.md", "engTitle": "Function vs. Block Scope"},
+				   		{"chTitle": "第四章：提升", "fileName": "ch4.md", "engTitle": "Hoisting"},
+				   		{"chTitle": "第五章：作用域闭包", "fileName": "ch5.md", "engTitle": "Scope Closures"},
+				   		{"chTitle": "附录A：动态作用域", "fileName": "apA.md", "engTitle": "Dynamic Scope"},
+				   		{"chTitle": "附录B：填补块儿作用域", "fileName": "apB.md", "engTitle": "Polyfilling Block Scope"},
+				   		{"chTitle": "附录C：词法this", "fileName": "apC.md", "engTitle": "Lexical-this"},
+				   		{"chTitle": "附录D：鸣谢", "fileName": "apD.md", "engTitle": "Thank You's!"}
+				   ]}, 
+    "this-and-object-prototypes": {"bookTitle": "this与对象原型", 
+				   "chapters": [
+				   		{"chTitle": "第一章: this还是That?", "fileName": "ch1.md", "engTitle": "this Or That?"},
+				   		{"chTitle": "第二章: this豁然开朗!", "fileName": "ch2.md", "engTitle": "this All Makes Sense Now!"},
+				   		{"chTitle": "第三章: 对象", "fileName": "ch3.md", "engTitle": "Objects"},
+				   		{"chTitle": "第四章: 混合（淆）“类”的对象", "fileName": "ch4.md", "engTitle": "Mixing (Up) “Class” Objects"},
+				   		{"chTitle": "第五章: 原型", "fileName": "ch5.md", "engTitle": "Prototypes"},
+				   		{"chTitle": "第六章: 行为委托", "fileName": "ch6.md", "engTitle": "Behavior Delegation"},
+				   		{"chTitle": "附录A: ES6 class", "fileName": "apA.md", "engTitle": "ES6 class"},
+				   		{"chTitle": "附录B：鸣谢", "fileName": "apB.md", "engTitle": "Thank You's!"}
+				   ]}, 
+    "types-and-grammar": {"bookTitle": "类型与文法", 
+				   "chapters": [
+				   		{"chTitle": "第一章：类型", "fileName": "ch1.md", "engTitle": "Types"},
+				   		{"chTitle": "第二章：值", "fileName": "ch2.md", "engTitle": "Values"},
+				   		{"chTitle": "第三章：原生类型", "fileName": "ch3.md", "engTitle": "Natives"},
+				   		{"chTitle": "第四章：强制转换", "fileName": "ch4.md", "engTitle": "Coercion"},
+				   		{"chTitle": "第五章：文法", "fileName": "ch5.md", "engTitle": "Grammar"},
+				   		{"chTitle": "附录A：混合环境下的JavaScript", "fileName": "apA.md", "engTitle": "Mixed Environment JavaScript"},
+				   		{"chTitle": "附录B: 鸣谢", "fileName": "apB.md", "engTitle": "Thank You's!"}
+				   ]}, 
+    "async-and-performance": {"bookTitle": "异步与性能", 
+				   "chapters": [
+				   		{"chTitle": "第一章: 异步:现在与稍后", "fileName": "ch1.md", "engTitle": "Asynchrony: Now & Later"},
+				   		{"chTitle": "第二章: 回调", "fileName": "ch2.md", "engTitle": "Callbacks"},
+				   		{"chTitle": "第三章: Promise", "fileName": "ch3.md", "engTitle": "Promises"},
+				   		{"chTitle": "第四章: Generator", "fileName": "ch4.md", "engTitle": "Generators"},
+				   		{"chTitle": "第五章: 程序性能", "fileName": "ch5.md", "engTitle": "Program Performance"},
+				   		{"chTitle": "第六章: 基准分析与调优", "fileName": "ch6.md", "engTitle": "Benchmarking & Tuning"},
+				   		{"chTitle": "附录A：库：asynquence", "fileName": "apA.md", "engTitle": "Library: asynquence"},
+				   		{"chTitle": "附录B：高级异步模式", "fileName": "apB.md", "engTitle": "Advanced Async Patterns"},
+				   		{"chTitle": "附录C：鸣谢", "fileName": "apC.md", "engTitle": "Thank You's!"}
+				   ]}, 
+	"es6-and-beyond": {"bookTitle": "ES6与未来", 
+				   "chapters": [
+				   		{"chTitle": "第一章：ES？现在与未来", "fileName": "ch1.md", "engTitle": "ES? Now & Future"},
+				   		{"chTitle": "第二章：语法", "fileName": "ch2.md", "engTitle": "Syntax"},
+				   		{"chTitle": "第三章：组织", "fileName": "ch3.md", "engTitle": "Organization"},
+				   		{"chTitle": "第四章：异步流程控制", "fileName": "ch4.md", "engTitle": "Async Flow Control"},
+				   		{"chTitle": "第五章：集合", "fileName": "ch5.md", "engTitle": "Collections"},
+				   		{"chTitle": "第六章：新增API", "fileName": "ch6.md", "engTitle": "API Additions"},
+				   		{"chTitle": "第七章：元编程", "fileName": "ch7.md", "engTitle": "Meta Programming"},
+				   		{"chTitle": "第八章：ES6之后", "fileName": "ch8.md", "engTitle": "Beyond ES6"},
+				   		{"chTitle": "附录A：鸣谢", "fileName": "apA.md", "engTitle": "Thank You's!"}
+				   ]}
+}

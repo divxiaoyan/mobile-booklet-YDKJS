@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>你不知道的JS掌上版</title>
+	<link rel="stylesheet" href="assets/highlight/solarized-light.css">
+	<link rel="stylesheet" href="assets/material/material-font.css">
+    <link rel="stylesheet" href="assets/material/material-icons.css">
+    <link rel="stylesheet" href="assets/material/material-components-web.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/page.css">
+    
+	
+</head>
+<body class="mdc-typography homepage-body">
+	<!-- header toolbar -->
+    <div class="header-toolbar mdc-theme--primary-bg mdc-theme--text-primary-on-primary mdc-typography--title mdc-elevation--z4">
+        <button class="header-menu material-icons">menu</button>
+        <span class="section-title" id="section-title">你不知道的JavaScript</span>
+        <a class="icon-github" href="https://github.com/antipasjiajia/mobile-booklet-YDKJS.git"></a>
+    </div>
+
+    <!-- side drawer -->
+    <aside class="mdc-temporary-drawer" id="pageDrawer">
+        <nav class="mdc-temporary-drawer__drawer">
+            <header class="mdc-temporary-drawer__header">
+                <div class="mdc-temporary-drawer__header-content mdc-typography--headline" id="home" style="color:#000">
+                     本章要点
+                </div>
+            </header>
+            <nav class="mdc-temporary-drawer__content mdc-list-group">
+                <div id="icon-with-text-demo" class="mdc-list">
+                    <!-- <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="#">入门与进阶</a> -->
+                </div>
+                <hr class="mdc-list-divider">
+                <div class="mdc-list">
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="index.html">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">home</i>丛书主页
+                    </a>
+                    <a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="" id="bookletHome">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">format_list_bulleted</i>本册目录
+                    </a>
+                </div>
+            </nav>
+        </nav>
+    </aside>
+
+    <!-- page content -->
+    <main class="page-main" id="anchor"></main>
+
+    <!-- toolkit -->
+    <div class="toolBtn mdc-elevation--z4" id="toolBtn"><i class="material-icons">settings</i></div>
+	<div class="toolkit mdc-elevation--z4" id="toolKit">
+    	<ul class="font" id="font">
+    		<li class="rem08">Aa</li>
+    		<li class="rem09">Aa</li>
+    		<li class="rem10 selected">Aa</li>
+    		<li class="rem11">Aa</li>
+    		<li class="rem12">Aa</li>
+    	</ul>
+    	<ul class="theme" id="theme">
+    		<li class="white"></li>
+    		<li class="yellow selected"></li>
+    		<li class="green"></li>
+    		<li class="brown"></li>
+    		<li class="blue"></li>
+    	</ul>
+    </div>
+
+	<!-- page footer -->
+    <!-- <footer>
+    	<a href=""><span class="header-menu material-icons">navigate_before</span>上一章</a>
+    	<a>下一章<span class="header-menu material-icons">navigate_next</span></a>
+    </footer> -->
+	
+	
+	<script src="assets/jquery-1.12.3.min.js"></script>
+	<script src="assets/marked.min.js"></script>
+	<script src="assets/highlight/highlight.pack.js"></script>
+	<script src="assets/material/material-components-web.min.js"></script>
+	<script>
+
+		window.onload = function(){
+
+			// add homeBtn
+            var homeBtn = document.getElementById('home');
+            homeBtn.onclick = function(){
+                console.log(1);
+                window.location.href = window.location.origin;
+            }
+
+		    // add page content from markdown files
+		 	var anchor = document.getElementById('anchor');
+
+		 	var searchUrl = window.location.search;
+		 	var bookId = searchUrl.slice(4, searchUrl.indexOf('&'));
+		 	var index = parseInt(searchUrl.slice(-1));
+		 	
+		 	var bookDir, chapUrl, maxIndex, pageTitle;
+
+		 	$.ajax({
+		 		type: 'GET',
+		 		url: 'contents.json',
+		 		success: function(books){
+		 			var curchap = books[bookId].chapters[index];
+		 	
+		 			bookDir = 'ch/' + bookId + '/';
+		 			chapUrl = bookDir + curchap.fileName;
+		 			maxIndex = books[bookId].chapters.length-1;
+		 			pageTitle = curchap.chTitle.slice(4);
+		 			
+		 			$.ajax({
+						type: 'GET',
+						url: chapUrl,
+						success: function(d){
+							$('#anchor').html(marked(d)); 
+							$('pre code').each(function(i, block) {
+							    hljs.highlightBlock(block);
+							  });
+
+							// adjust img src to the right dir
+							$('img').each(function(i, img){
+								img.src = bookDir + img.getAttribute('src');
+							});
+
+							// append footer
+							var footer = document.createElement('footer');
+							
+							footer.innerHTML = `<a id="footerBefore" href="">
+													<i class="header-menu material-icons">navigate_before</i>
+													<span class="footer-nav">上一章</span>
+												</a>
+		    								    <a id="footerNext" href="">
+		    								    	<span class="footer-nav">下一章</span>
+		    								    	<i class="header-menu material-icons">navigate_next</i>
+	    								    	</a>`;
+							$('body').append(footer);
+
+							// prepare footer navigation
+							var footerBefore = document.getElementById('footerBefore');
+							var footerNext = document.getElementById('footerNext');
+
+							footerBefore.href = window.location.href.slice(0,-1) + (index-1);
+							footerNext.href = window.location.href.slice(0,-1) + (index+1);
+
+							if(index == 0){
+								footerBefore.href = window.location.origin + '/booklet.html?id=' + bookId;
+								$('#footerBefore span').html('本书首页');
+							}
+							if(index == maxIndex){
+								footerNext.href = window.location.origin + '/booklet.html?id=' + bookId;
+								$('#footerNext span').html('本书首页');
+							}
+
+							// prepare sidebar navigation
+							var h2s = $('h2');
+							var sideNav = $('.mdc-list')[0];
+							sideNav.innerHTML = '';
+							for(var i=0, j=h2s.length; i<j; i++){
+								var content = h2s[i].innerHTML;
+								h2s[i].innerHTML = `<div id="h2-${i}" class="h2Anchor"></div>${content}`;
+								// h2s[i].id = `h2-${i}`;
+								// h2s[i].className = 'h2Anchor';
+								sideNav.innerHTML += `<a class="mdc-list-item mdc-ripple-surface" data-mdc-auto-init="MDCRipple" href="#h2-${i}">${content}</a>`;
+							}
+
+							// init mdc default behaviors
+						    var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+						    var drawer = new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer'));
+						   	var pageDrawer = document.getElementById('pageDrawer');
+						    window.mdc.autoInit();
+						    document.querySelector('.header-menu').addEventListener('click', function() {
+						        drawer.open = true;
+						    });
+						    pageDrawer.querySelector('nav').addEventListener('click', function(){
+						    	pageDrawer.className = "mdc-temporary-drawer";
+						    });
+
+						}
+					});
+		 		}
+		 	});
+
+		 	// add booklet homebtn
+            var bookletHome = document.getElementById('bookletHome');
+            bookletHome.setAttribute('href', 'booklet.html?id='+bookId);
+
+		 	// add toolkit behaviors
+		 	var toolBtn = document.getElementById('toolBtn');
+		 	var toolKit = document.getElementById('toolKit');
+		 	var stylesheet = document.getElementsByTagName('link')[0];
+		 	// toggling toolkit panel
+		 	toolBtn.onclick = function(){
+		 		toolKit.className += ' active';
+		 	};
+		 	anchor.onclick = function(){
+		 		toolKit.className = "toolkit mdc-elevation--z4";
+		 	};
+		 	toolKit.onclick = function(e){
+		 		if(e.target.tagName === 'LI'){
+		 			// adjust font-size
+		 			if(e.target.className.indexOf('rem') !== -1){
+		 				// get target font-size
+		 				var targetFont = parseInt(e.target.className.slice(3,5))/10;
+		 				// change active class
+		 				$('#font .selected').removeClass('selected');
+		 				e.target.className += ' selected';
+		 				// change font-size
+		 				$('.page-main p').css({fontSize: targetFont + 'rem'});
+		 				$('.page-main ul').css({fontSize: targetFont + 'rem'});
+		 				$('.page-main pre').css({fontSize: targetFont + 'rem'});
+		 			} 
+		 			// adjust color theme
+		 			else if(e.target.className.indexOf('selected') === -1){
+		 				// get target theme
+		 				var targetTheme = e.target.className;
+		 				// change active class
+		 				$('#theme .selected').removeClass('selected');
+		 				e.target.className += ' selected';
+		 				switch(targetTheme){
+		 					case 'white': 
+		 						$('.homepage-body').css({
+		 							backgroundColor: "rgb(255, 255, 255)",
+		 							color: "rgb(0, 0, 0)"
+		 						});
+		 						stylesheet.setAttribute('href', 'assets/highlight/github-gist.css');
+		 						break;
+		 					case 'yellow': 
+		 						$('.homepage-body').css({
+		 							backgroundColor: "rgba(253, 246, 227, 0.4)",
+		 							color: "rgb(0, 0, 0)"
+		 						});
+		 						stylesheet.setAttribute('href', 'assets/highlight/solarized-light.css');
+		 						break;
+		 					case 'green': 
+		 						$('.homepage-body').css({
+		 							backgroundColor: "rgba(123, 165, 133,0.3)",
+		 							color: "rgb(0, 0, 0)"
+		 						});
+		 						stylesheet.setAttribute('href', 'assets/highlight/monokai-sublime.css');
+		 						break;
+		 					case 'brown': 
+		 						$('.homepage-body').css({
+		 							backgroundColor: "rgb(76, 64, 59)",
+		 							color: "rgb(170, 170, 170)"
+		 						});
+		 						stylesheet.setAttribute('href', 'assets/highlight/monokai-sublime.css');
+		 						break;
+		 					case 'blue': 
+		 						$('.homepage-body').css({
+		 							backgroundColor: "rgb(6, 23, 36)",
+		 							color: "rgb(131, 148, 150)"
+		 						});
+		 						stylesheet.setAttribute('href', 'assets/highlight/solarized-dark.css');
+		 						break;
+		 				}
+		 			}
+		 		}
+		 	};
+
+			// change section-title on scroll
+			document.addEventListener('scroll', function(){
+				if(pageYOffset >= 120){
+					$('#section-title').html(pageTitle);
+				} else {
+					$('#section-title').html('你不知道的JavaScript');
+				}
+			}, false);
+
+    	}
+		
+	</script>
+</body>
+</html>

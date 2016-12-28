@@ -1,0 +1,191 @@
+/*whole page*/
+
+.homepage-body {
+    background-color: rgba(253, 246, 227, 0.4);
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.page-main {
+    margin-top: 76px;
+    padding: 0 16px;
+}
+
+.page-main h1 {
+    font-size: 1.8rem;
+}
+
+.page-main h2 .h2Anchor {
+    position: relative;
+    top: -76px;
+}
+
+.page-main img {
+    max-width: 100%;
+    height: auto;
+}
+
+blockquote {
+    padding: 5px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.page-main p,
+.page-main ul,
+.page-main pre {
+    font-size: 1rem;
+}
+
+
+/*toolkit*/
+
+.toolBtn {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgba(49, 49, 47, 0.9);
+    position: fixed;
+    right: 35px;
+    bottom: 55px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.toolBtn:hover {
+    transform: rotate(100deg);
+    cursor: pointer;
+}
+
+.toolBtn i {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+}
+
+.toolkit {
+    width: 100%;
+    height: 110px;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: rgb(49, 49, 47);
+    position: fixed;
+    left: 0;
+    bottom: -110px;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.toolkit.active {
+    bottom: 0px;
+    transition: all 0.3s ease;
+}
+
+.toolkit ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.toolkit ul li {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.toolkit ul li:hover{
+    cursor: pointer;
+}
+
+.toolkit ul.font li{
+    line-height: 25px;
+    color: rgb(140, 140, 140);
+    border: 1px solid rgb(140, 140, 140);
+    text-align: center;
+}
+.toolkit ul.font li.rem08{font-size: 0.5rem;}
+.toolkit ul.font li.rem09{font-size: 0.6rem;}
+.toolkit ul.font li.rem10{font-size: 0.7rem;}
+.toolkit ul.font li.rem11{font-size: 0.8rem;}
+.toolkit ul.font li.rem12{font-size: 0.9rem;}
+
+.toolkit ul.theme li.white{
+    background-color: rgb(255, 255, 255);
+}
+.toolkit ul.theme li.green{
+    background-color: rgb(123, 165, 133);
+}
+.toolkit ul.theme li.yellow{
+    background-color: rgb(253, 246, 227);
+}
+.toolkit ul.theme li.brown{
+    background-color: rgb(76, 64, 59);
+}
+.toolkit ul.theme li.blue{
+    background-color: rgb(0, 43, 54);
+}
+.toolkit ul li.selected {
+    border: 1px solid rgb(187, 72, 72);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+/*footer*/
+
+footer {
+    height: 64px;
+    padding: 0 16px;
+    background-color: rgb(49, 49, 47);
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer a {
+    display: block;
+    height: 64px;
+    line-height: 64px;
+    text-decoration: none;
+    color: #fff;
+}
+
+footer a i {
+    position: relative;
+    top: 5px;
+}
+
+
+/*media*/
+
+@media (min-width: 600px) {
+    .homepage-body {
+        overflow: auto;
+    }
+    .page-main {
+        margin-top: 86px;
+        padding: 0 32px;
+    }
+    .page-main h2 .h2Anchor {
+        position: relative;
+        top: -86px;
+    }
+    .page-main p,
+    .page-main ul {
+        font-size: 1rem;
+    }
+    .page-main pre {
+        font-size: 0.9rem;
+    }
+    footer {
+        width: auto;
+        position: relative;
+        padding: 0 32px;
+    }
+}
